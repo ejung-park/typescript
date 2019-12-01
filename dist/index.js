@@ -16,7 +16,7 @@ Block.validateStructure = (aBlock) => typeof aBlock.index === "number" &&
     typeof aBlock.previousHash === "string" &&
     typeof aBlock.data === "string" &&
     typeof aBlock.timestamp === "number";
-const genesisBlock = new Block(0, "2020202020", "", "hello", 123456);
+const genesisBlock = new Block(0, "123123123", "", "hello", 123456);
 let blockchain = [genesisBlock];
 const getBlockchain = () => blockchain;
 const getLatestBlock = () => blockchain[blockchain.length - 1];
@@ -27,6 +27,7 @@ const createNewBlock = (data) => {
     const nextTimestamp = getNewTimesStamp();
     const nextHash = Block.calculateBlockHash(newIndex, previousBlock.hash, data, nextTimestamp);
     const newBlock = new Block(newIndex, nextHash, previousBlock.hash, data, nextTimestamp);
+    addBlock(newBlock); //새로 생성한 블록을 addBlock 함수를 사용하여 블록체인에 추가
     return newBlock;
 };
 const getHashforBlock = (aBlock) => Block.calculateBlockHash(aBlock.index, aBlock.previousHash, aBlock.data, aBlock.timestamp);
@@ -52,6 +53,8 @@ const addBlock = (candidateBlock) => {
         blockchain.push(candidateBlock);
     }
 };
-console.log(createNewBlock("hello"));
-console.log(createNewBlock("bye bye"));
+createNewBlock("second block");
+createNewBlock("thrid block");
+createNewBlock("fourth block");
+console.log(blockchain);
 //# sourceMappingURL=index.js.map

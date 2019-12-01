@@ -32,7 +32,7 @@ class Block {
     }
 }
 
-const genesisBlock: Block = new Block(0, "2020202020", "", "hello", 123456);
+const genesisBlock: Block = new Block(0, "123123123", "", "hello", 123456);
 
 let blockchain: Block[] = [genesisBlock];
 
@@ -48,6 +48,7 @@ const createNewBlock = (data: string) : Block => {
     const nextTimestamp: number = getNewTimesStamp();
     const nextHash: string = Block.calculateBlockHash(newIndex, previousBlock.hash, data, nextTimestamp);
     const newBlock: Block = new Block(newIndex, nextHash, previousBlock.hash, data, nextTimestamp);
+    addBlock(newBlock); //새로 생성한 블록을 addBlock 함수를 사용하여 블록체인에 추가
     return newBlock;
 }
 
@@ -68,12 +69,15 @@ const isBlockValid = (candidateBlock: Block, previousBlock: Block): boolean => {
 }
 
 const addBlock = (candidateBlock: Block) : void => {
-    if(isBlockValid(candidateBlock, getLatestBlock())) {
+    if(isBlockValid(candidateBlock, getLatestBlock())) { 
         blockchain.push(candidateBlock);
     }
 }
 
-console.log(createNewBlock("hello"));
-console.log(createNewBlock("bye bye"));
+createNewBlock("second block");
+createNewBlock("thrid block");
+createNewBlock("fourth block");
+
+console.log(blockchain);
 
 export {};
