@@ -1,16 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class Human {
-    constructor(name, age, gender) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
+const CryptoJS = require("crypto-js");
+class Block {
+    constructor(index, hash, previousHash, data, timestamp) {
+        this.index = index;
+        this.hash = hash;
+        this.previousHash = previousHash;
+        this.data = data;
+        this.timestamp = timestamp;
     }
 }
-const ejung = new Human("Ejung", 34, "Female");
-const sayHi = (person) => {
-    return (`Hello ${person.name} you are ${person.age}, you are a ${person.gender}`);
-};
-var sayHiPrint = sayHi(ejung);
-console.log(sayHiPrint);
+Block.calculateBlockHash = (index, previousHash, timestamp, data) => CryptoJS.SHA256(index + previousHash + timestamp + data).toString();
+const genesisBlock = new Block(0, "123123123", "", "Hello", 123456);
+let blockchain = [genesisBlock];
+const getBlockchain = () => blockchain;
+const getLatestBlock = () => blockchain[blockchain.length - 1];
+const getNewTimeStamp = () => Math.round(new Date().getTime() / 1000);
+console.log(blockchain);
 //# sourceMappingURL=index.js.map
