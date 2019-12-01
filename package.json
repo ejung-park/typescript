@@ -6,10 +6,13 @@
   "author": "ejung <leejungstyle@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js",
-    "prestart": "tsc"
+    "start": "tsc-watch --onSuccess \" node dist/index.js \" "
   },
   "devDependencies": {
+    "tsc": "^1.20150623.0",
     "tsc-watch": "^4.0.0"
+  },
+  "dependencies": {
+    "typescript": "^3.7.2"
   }
 }
