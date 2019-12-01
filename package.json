@@ -8,5 +8,8 @@
   "scripts": {
     "start": "node index.js",
     "prestart": "tsc"
+  },
+  "devDependencies": {
+    "tsc-watch": "^4.0.0"
   }
 }
