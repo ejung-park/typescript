@@ -1,9 +1,10 @@
 {
-    "compilerOptions": { //컴파일과정에서 어떤 파일들이 포함되는지 설정
+    "compilerOptions": { //컴파일 옵션 설정
         "module": "commonjs",
         "target": "es2015",
         "sourceMap": true 
     },
     "include": ["index.ts"], //컴파일과정에서 포함할 파일
-    "exclude": ["node_modules"] //제외
+    "exclude": ["node_modules"], //컴파일과정에서 제외
+    
 }

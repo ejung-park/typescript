@@ -6,7 +6,7 @@
   "author": "ejung <leejungstyle@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js", //index.js 를 처음 실행
-    "prestart": "tsc" //index.js 를 실행하기전에 ts 파일의 컴파일이 필요하므로 tsc 를 실행하도록 함
+    "start": "node index.js",
+    "prestart": "tsc"
   }
 }
